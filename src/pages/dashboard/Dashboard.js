@@ -13,9 +13,7 @@ import {
 import Widget from "../../components/Widget/Widget.js";
 import ApexActivityChart from "./components/ActivityChart.js";
 
-import meal1 from "../../assets/dashboard/meal-1.svg";
-import meal2 from "../../assets/dashboard/meal-2.svg";
-import meal3 from "../../assets/dashboard/meal-3.svg";
+
 import upgradeImage from "../../assets/dashboard/upgradeImage.svg";
 import heartRed from "../../assets/dashboard/heartRed.svg";
 import heartTeal from "../../assets/dashboard/heartTeal.svg";
@@ -33,68 +31,96 @@ const Dashboard = () => {
 
   const toggleCheckbox = (id) => {
     setCheckboxes(checkboxes => checkboxes
-      .map((checkbox, index) => index === id ? !checkbox : checkbox ))
+      .map((checkbox, index) => index === id ? !checkbox : checkbox))
   }
 
-  const meals = [meal1, meal2, meal3];
+  const cat1 =
+  {
+    "titre": "Actualités",
+    "desc": "Informations liée à l'actualitée",
+    "nb": "240"
+  }
+
+  const cat2 =
+  {
+    "titre": "Aides",
+    "desc": "Aides versée à la population",
+    "nb": "225"
+  }
+
+  const cat3 =
+  {
+    "titre": "Etudiants",
+    "desc": "Ressources liées à la vie étudiante",
+    "nb": "198"
+  }
+
+  const cat = [cat1, cat2, cat3];
 
   return (
     <div>
       <Row>
         <Col className="pr-grid-col" xs={12} lg={8}>
           <Row className="gutter mb-4">
+
+
+            {/* Widget activite des ressources */}
             <Col className="mb-4 mb-md-0" xs={12} md={6}>
               <Widget className="">
                 <div className="d-flex justify-content-between widget-p-md">
-                  <div className="headline-3 d-flex align-items-center">Your activity</div>
+                  <div className="headline-3 d-flex align-items-center">Activité des ressources</div>
                   <UncontrolledDropdown>
                     <DropdownToggle caret>
-                      &nbsp; Weekly &nbsp;
+                      &nbsp; Semaine &nbsp;
                     </DropdownToggle>
                     <DropdownMenu>
-                      <DropdownItem>Daily</DropdownItem>
-                      <DropdownItem>Weekly</DropdownItem>
-                      <DropdownItem>Monthly</DropdownItem>
+                      <DropdownItem>Journée</DropdownItem>
+                      <DropdownItem>Semaine</DropdownItem>
+                      <DropdownItem>Mois</DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </div>
-                <ApexActivityChart className="pb-4"/>
+                <ApexActivityChart className="pb-4" />
               </Widget>
             </Col>
+
+            {/* Widget cat plus active */}
             <Col xs={12} md={6}>
               <Widget className="widget-p-md">
                 <div className="d-flex justify-content-between">
-                  <div className="headline-3 d-flex align-items-center">Your meals</div>
+                  <div className="headline-3 d-flex align-items-center">Catégories les plus actives</div>
                   <UncontrolledDropdown>
                     <DropdownToggle caret>
-                      &nbsp; Weekly &nbsp;
+                      &nbsp; Semaine &nbsp;
                     </DropdownToggle>
                     <DropdownMenu>
-                      <DropdownItem>Daily</DropdownItem>
-                      <DropdownItem>Weekly</DropdownItem>
-                      <DropdownItem>Monthly</DropdownItem>
+                      <DropdownItem>Journée</DropdownItem>
+                      <DropdownItem>Semaine</DropdownItem>
+                      <DropdownItem>Mois</DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </div>
-                {meals.map((meal) =>
+                {cat.map((cat) =>
                   <div key={uuidv4()} className={`mt-4 ${s.widgetBlock}`}>
                     <div className={s.widgetBody}>
                       <div className="d-flex">
-                        <img className="img-fluid mr-2" src={meal} alt="..." />
                         <div className="d-flex flex-column">
-                          <p className="body-2">Salmon salad</p>
-                          <p className="body-3 muted">300 g</p>
+                          <p className="body-2">{cat.titre}</p>
+                          <p className="body-3 muted">{cat.desc}</p>
                         </div>
                       </div>
                       <div className="body-3 muted">
-                        175 cal
+                        {cat.nb}
                       </div>
                     </div>
                   </div>
                 )}
               </Widget>
             </Col>
+
+
           </Row>
+
           <Row className="gutter mb-4">
             <Col xs={12}>
               <Widget className="widget-p-none">
@@ -114,6 +140,9 @@ const Dashboard = () => {
               </Widget>
             </Col>
           </Row>
+
+
+          {/* Statistique d'ordre général */}
           <Row className="gutter">
             <Col className="mb-4 mb-xl-0" xs={6} sm={6} xl={3}>
               <Widget className="widget-p-sm">
@@ -180,116 +209,94 @@ const Dashboard = () => {
               </Widget>
             </Col>
           </Row>
+
+          
         </Col>
+
+
+        {/* Widget publication de ressources */}
         <Col className="mt-4 mt-lg-0 pl-grid-col" xs={12} lg={4}>
           <Widget className="widget-p-lg">
-            <div className="d-flex">
-              <img className={s.image} src={user} alt="..." />
-              <div className={s.userInfo}>
-                <p className="headline-3">Christina Karey</p>
-                <p className="body-3 muted">Brasil</p>
-              </div>
-            </div>
+            <div className="headline-3 d-flex align-items-center">Publication de ressources</div>
+
+            {/* Stats global ressources */}
             <div className={s.userParams}>
               <div className="d-flex flex-column">
-                <p className="headline-3">63 kg</p>
-                <p className="body-3 muted">Weight</p>
+                <p className="headline-3">210</p>
+                <p className="body-3 muted">En attente</p>
               </div>
               <div className="d-flex flex-column">
-                <p className="headline-3">175 sm</p>
-                <p className="body-3 muted">Height</p>
+                <p className="headline-3">220</p>
+                <p className="body-3 muted">Dépublié</p>
               </div>
               <div className="d-flex flex-column">
-                <p className="headline-3">28 y.</p>
-                <p className="body-3 muted">Age</p>
+                <p className="headline-3">25</p>
+                <p className="body-3 muted">Publiée</p>
               </div>
             </div>
+            {/* Fin stats global ressources */}
+
+
+            {/* Statistique */}
             <div className={s.goals}>
               <div className={s.goalsTitle}>
-                <p className="headline-3">Your Goals</p>
-                <UncontrolledDropdown>
-                  <DropdownToggle caret>
-                    &nbsp; Weekly &nbsp;
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem>Daily</DropdownItem>
-                    <DropdownItem>Weekly</DropdownItem>
-                    <DropdownItem>Monthly</DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
+                <p className="headline-3">Statistiques</p>
               </div>
               <div className="d-flex flex-column mt-3">
                 <div className={s.activity}>
-                  <p className="body-2">Sleep</p>
-                  <p className="body-2">92<span className="body-3 muted"> / 160</span></p>
+                  <p className="body-2">Publié / En attente</p>
+                  <p className="body-2"><span className="body-3 muted">235</span></p>
                 </div>
-                <Progress color="secondary-red" className="progress-xs" value={60} />
-              </div>
-              <div className="d-flex flex-column mt-3">
-                <div className={s.activity}>
-                  <p className="body-2">Sport</p>
-                  <p className="body-2">40<span className="body-3 muted"> / 50</span></p>
-                </div>
-                <Progress color="secondary-yellow" className="progress-xs" value={80} />
-              </div>
-              <div className="d-flex flex-column mt-3">
-                <div className={s.activity}>
-                  <p className="body-2">Water</p>
-                  <p className="body-2">25<span className="body-3 muted"> / 40</span></p>
-                </div>
-                <Progress color="secondary-cyan" className="progress-xs" value={40} />
+                <Progress className="progress-xs" multi>
+                  <Progress bar color="success" value="90" />
+                  <Progress bar color="warning" value="10" />
+                </Progress>
               </div>
             </div>
-            <p className="headline-3">Appointments</p>
-            <div className={`mt-3 ${s.widgetBlock}`}>
-              <div className={s.widgetBody}>
-                <div className="d-flex">
-                  <img className="img-fluid mr-2" src={gymIcon} alt="..." />
-                  <div className="d-flex flex-column">
-                    <p className="body-2">02.11 , 12:00 - 13:00</p>
-                    <p className="body-3 muted">Yoga, Airplace Gym</p>
+            {/* Fin statistique */}
+
+            {/* Recap des dernières ressources */}
+            <p className="headline-3">Dernière ressources</p>
+            {cat.map((cat) =>
+              <div key={uuidv4()} className={`mt-4 ${s.widgetBlock}`}>
+                <div className={s.widgetBody}>
+                  <div className="d-flex">
+                    <div className="d-flex flex-column">
+                      <p className="body-2">{cat.titre}</p>
+                      <p className="body-3 muted">{cat.desc}</p>
+                    </div>
+                  </div>
+                  <div className="body-3 muted">
+                    {cat.nb}
                   </div>
                 </div>
-                <div className="checkbox checkbox-primary">
-                  <input
-                    id="checkbox0"
-                    type="checkbox"
-                    className="styled"
-                    checked={checkboxes[0]}
-                    onChange={() => toggleCheckbox(0)}
-                  />
-                  <label htmlFor="checkbox0" />
-                </div>
               </div>
+            )}
+            {/* fin recap des dernières ressources */}
+
+            {/* Zone téléchargement rapport */}
+            <div className="d-flex justify-content-between mt-5">
+              <div className="headline-3 d-flex align-items-center">Rapport</div>
+              <UncontrolledDropdown>
+                <DropdownToggle caret>
+                  &nbsp; Semaine &nbsp;
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>Journée</DropdownItem>
+                  <DropdownItem>Semaine</DropdownItem>
+                  <DropdownItem>Mois</DropdownItem>
+                  <DropdownItem>Année</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </div>
-            <div className={`mt-3 ${s.widgetBlock}`}>
-              <div className={s.widgetBody}>
-                <div className="d-flex">
-                  <img className="img-fluid mr-2" src={therapyIcon} alt="..." />
-                  <div className="d-flex flex-column">
-                    <p className="body-2">03.11 , 16:00 - 17:30</p>
-                    <p className="body-3 muted">Therapy</p>
-                  </div>
-                </div>
-                <div className="checkbox checkbox-primary">
-                  <input
-                    id="checkbox1"
-                    type="checkbox"
-                    className="styled"
-                    checked={checkboxes[1]}
-                    onChange={() => toggleCheckbox(1)}
-                  />
-                  <label htmlFor="checkbox1" />
-                </div>
-              </div>
-            </div>
-            <a className={`btn-secondary-red ${s.statsBtn}`} href="#top" role="button">
-              <img className={s.pieImg}  src={statsPie} alt="..." />
+            <a className={`btn-primary ${s.statsBtn}`} href="#top" role="button">
+              <img className={s.pieImg} src={statsPie} alt="..." />
               <div>
-                <p className="headline-2">STATISTIC</p>
-                <p className="body-3">Download your activity</p>
+                <p className="headline-2">RAPPORT</p>
+                <p className="body-3">Télécharger un rapport</p>
               </div>
             </a>
+            {/* Fin zone téléchargement rapport */}
           </Widget>
         </Col>
       </Row>

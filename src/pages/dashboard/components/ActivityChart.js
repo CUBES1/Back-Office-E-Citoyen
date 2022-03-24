@@ -2,18 +2,14 @@ import React from "react";
 import ApexCharts from "react-apexcharts";
 
 const series = [{
-  name: 'Your Activity',
+  name: 'Activité',
   type: 'column',
   data: [350, 275, 375, 375, 300, 225, 275]
-}, {
-  name: 'Your Goal',
-  type: 'line',
-  data: [400, 350, 450, 400, 350, 300, 350]
 
 }];
 
 const chartSettings = {
-  colors: ["#FFCA41", "#43BC13"],
+  colors: ["#FFCA41"],
   chart: {
     height: 350,
     type: 'line',
@@ -23,7 +19,7 @@ const chartSettings = {
   },
   stroke: {
     curve: "straight",
-    width: [0, 1]
+    width: [0]
   },
   dataLabels: {
     enabled: true,
@@ -36,7 +32,7 @@ const chartSettings = {
       borderWidth: 0,
     },
   },
-  labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  labels: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
   legend: {
     position: "top",
     floating: true,
