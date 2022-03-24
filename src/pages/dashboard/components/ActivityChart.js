@@ -9,7 +9,7 @@ const series = [{
 }];
 
 const chartSettings = {
-  colors: ["#FFCA41"],
+  colors: ["#00cba9"],
   chart: {
     height: 350,
     type: 'line',
