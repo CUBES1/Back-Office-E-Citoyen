@@ -41,7 +41,7 @@ const Login = (props) => {
     setState({ ...state, [event.target.name]: event.target.value })
   }
 
-  const { from } = props.location.state || { from: { pathname: '/template' } };
+  const { from } = props.location.state || { from: { pathname: '/administration' } };
   if (hasToken(JSON.parse(localStorage.getItem('authenticated')))) {
     return (
       <Redirect to={from} />

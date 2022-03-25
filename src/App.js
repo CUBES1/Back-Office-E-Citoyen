@@ -41,9 +41,9 @@ const App = (props) => {
       <ToastContainer/>
       <HashRouter>
         <Switch>
-          <Route path="/" exact render={() => <Redirect to="/template/dashboard" />} />
-          <Route path="/template" exact render={() => <Redirect to="/template/dashboard"/>}/>
-          <PrivateRoute path="/template" dispatch={props.dispatch} component={LayoutComponent} />
+          <Route path="/" exact render={() => <Redirect to="/administration/dashboard" />} />
+          <Route path="/administration" exact render={() => <Redirect to="/administration/dashboard"/>}/>
+          <PrivateRoute path="/administration" dispatch={props.dispatch} component={LayoutComponent} />
           <Route path="/login" exact component={Login} />
           <Route path="/error" exact component={ErrorPage} />
           <Route path="/register" exact component={Register} />

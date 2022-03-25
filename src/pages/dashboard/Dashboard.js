@@ -121,7 +121,7 @@ const Dashboard = () => {
 
           </Row>
 
-          <Row className="gutter mb-4">
+          {/* <Row className="gutter mb-4">
             <Col xs={12}>
               <Widget className="widget-p-none">
                 <div className="d-flex flex-wrap align-items-center justify-content-center">
@@ -139,7 +139,7 @@ const Dashboard = () => {
                 </div>
               </Widget>
             </Col>
-          </Row>
+          </Row> */}
 
 
           {/* Statistique d'ordre général */}

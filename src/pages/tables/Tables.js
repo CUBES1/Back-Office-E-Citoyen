@@ -43,7 +43,7 @@ const Tables = function () {
   const [secondTableCurrentPage, setSecondTableCurrentPage] = useState(0);
   const [tableDropdownOpen, setTableMenuOpen] = useState(false);
 
-  const pageSize = 4;
+  const pageSize = 15;
   const firstTablePagesCount = Math.ceil(firstTable.length / pageSize);
   const secondTablePagesCount = Math.ceil(secondTable.length / pageSize);
 
@@ -63,7 +63,7 @@ const Tables = function () {
 
   const transactionMenuOpen = (id) => {
     setTransactions(
-      transactions.map( transaction => {
+      firstTable.map( transaction => {
         if (transaction.id === id) {
           transaction.dropdownOpen = !transaction.dropdownOpen;
         }
@@ -72,9 +72,7 @@ const Tables = function () {
     )
   }
 
-  const tableMenuOpen = () => {
-    setTableMenuOpen(!tableDropdownOpen);
-  }
+
 
   const toggleTask = (id) => {
     setTasks(
@@ -95,33 +93,22 @@ const Tables = function () {
             <Col>
               <Widget>
                 <div className={s.tableTitle}>
-                  <div className="headline-2">States Colors</div>
+                  <div className="headline-2">Ressources</div>
                   <div className="d-flex">
                     <a href="/#"><img src={searchIcon} alt="Search"/></a>
-                    <a href="/#"><img className="d-none d-sm-block" src={cloudIcon} alt="Cloud" /></a>
-                    <a href="/#"><img src={printerIcon} alt="Printer" /></a>
-                    <a href="/#"><img className="d-none d-sm-block" src={optionsIcon} alt="Options" /></a>
                     <a href="/#"><img src={funnelIcon} alt="Funnel" /></a>
+                    <a href="/#"><img className="d-none d-sm-block" src={cloudIcon} alt="Cloud" /></a>
                   </div>
                 </div>
                 <div className="widget-table-overflow">
                   <Table className={`table-striped table-borderless table-hover ${s.statesTable}`} responsive>
                     <thead>
                     <tr>
-                      <th className={s.checkboxCol}>
-                        <div className="checkbox checkbox-primary">
-                          <input
-                            className="styled"
-                            id="checkbox100"
-                            type="checkbox"
-                          />
-                          <label for="checkbox100"/>
-                        </div>
-                      </th>
-                      <th className="w-25">NAME</th>
-                      <th className="w-25">COMPANY</th>
-                      <th className="w-25">CITY</th>
-                      <th className="w-25">STATE</th>
+                      <th></th>
+                      <th className="w-25">AUTEUR</th>
+                      <th className="w-25">TITRE</th>
+                      <th className="w-25">CATEGORIE</th>
+                      <th className="w-25">STATUS</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -132,24 +119,40 @@ const Tables = function () {
                       )
                       .map(item => (
                         <tr key={uuidv4()}>
-                          <td>
-                            <div className="checkbox checkbox-primary">
-                              <input
-                                id={item.id}
-                                className="styled"
-                                type="checkbox"
-                              />
-                              <Label for={item.id} />
-                            </div>
-                          </td>
+                          <td></td>
                           <td className="d-flex align-items-center"><img className={s.image} src={item.img} alt="User"/><span className="ml-3">{item.name}</span></td>
-                          <td>{item.company}</td>
-                          <td>{item.city}</td>
-                          <td>{item.state}</td>
+                          <td>{item.titre}</td>
+                          <td>{item.categorie}</td>
+                          <td><Badge color={item.color}>{item.status}</Badge></td>
+                          <td>
+                          <Dropdown
+                        className="d-none d-sm-block"
+                        nav
+                        isOpen={item.dropdownOpen}
+                        toggle={() => transactionMenuOpen(item.id)}
+                      >
+                        <DropdownToggle nav>
+                          <img className="d-none d-sm-block" src={moreIcon} alt="More ..."/>
+                        </DropdownToggle>
+                        <DropdownMenu >
+                          <DropdownItem>
+                            <div>Consulter</div>
+                          </DropdownItem>
+                          <DropdownItem>
+                            <div>Modifier</div>
+                          </DropdownItem>
+                          <DropdownItem>
+                            <div>Suprimmer</div>
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </Dropdown>
+                        </td>
                         </tr>
                       ))}
                     </tbody>
                   </Table>
+                  
+
                   <Pagination className="pagination-borderless" aria-label="Page navigation example">
                     <PaginationItem disabled={firstTableCurrentPage <= 0}>
                       <PaginationLink
@@ -173,11 +176,16 @@ const Tables = function () {
                       />
                     </PaginationItem>
                   </Pagination>
+
+
                 </div>
               </Widget>
             </Col>
           </Row>
-          <Row className="mb-4">
+
+
+
+          {/* <Row className="mb-4">
             <Col>
               <Widget>
                 <div className={s.tableTitle}>
@@ -282,8 +290,10 @@ const Tables = function () {
                 </div>
               </Widget>
             </Col>
-          </Row>
-          <Row>
+          </Row> */}
+
+          
+          {/* <Row>
             <Col xs={12} xl={8} className="pr-grid-col">
               <Widget>
                 <div className={s.tableTitle}>
@@ -303,7 +313,7 @@ const Tables = function () {
                         <DropdownItem>Monthly</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
-                    {/*<img src="" alt="Filter option"/>*/}
+                 
                   </div>
                 </div>
                 <div className={s.widgetContentBlock}>
@@ -351,6 +361,8 @@ const Tables = function () {
               </Widget>
             </Col>
           </Row>
+        </Col>
+      </Row> */}
         </Col>
       </Row>
     </div>

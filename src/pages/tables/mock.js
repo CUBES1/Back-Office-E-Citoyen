@@ -8,138 +8,201 @@ import joystickIcon from "../../assets/tables/joystickIcon.svg";
 import basketIcon from "../../assets/tables/basketIcon.svg";
 
 
+// https://json-generator.com/#
+
+// [
+//   '{{repeat(5, 20)}}',
+//   {
+   
+//     guid: '{{guid()}}',
+//     name: '{{firstName()}} {{surname()}}',
+//     img: 'https://source.unsplash.com/random/35×35',
+//     titre: '{{lorem(4, "words")}}',
+//     categorie:  '{{lorem(1, "words")}}',
+//     color: '{{random("success", "secondary-red", "secondary-yellow")}}',
+//     status: function (tags, index) { 
+//       switch(this.color) {
+//         case 'success':
+//           return 'Publié'
+//         case 'secondary-red':
+//           return 'Dé-publié'
+//         default:
+//           return 'Attente validation'
+//       }
+//     }
+    
+    
+//   }
+// ]
 
 const mock = {
   firstTable: [
     {
-      id: "checkbox111",
-      img: janeCooperImg,
-      name: "Jane Cooper",
-      company: "Barrone LLC.",
-      city: "Kalamazoo, MI",
-      state: "Michigan",
+      "id": "7c44ff0d-f45f-4ac0-9767-75b79f10c7ec",
+      "name": "Caldwell Weeks",
+      "img": ellieSmithImg,
+      "titre": "proident ad mollit excepteur",
+      "categorie": "proident",
+      "color": "secondary-yellow",
+      "status": "Attente validation"
     },
     {
-      id: "checkbox112",
-      img: ellieSmithImg,
-      name: "Ellie Smith",
-      company: "Abstergo Ltd.",
-      city: "Bainbridge Island, WA",
-      state: "Massachusetts",
+      "id": "6b0f7589-8fa6-482c-9a1e-5382c6ec3764",
+      "name": "Spears Ellison",
+      "img": ellieSmithImg,
+      "titre": "eu elit nostrud nostrud",
+      "categorie": "eu",
+      "color": "success",
+      "status": "Publié"
     },
     {
-      id: "checkbox113",
-      img: rosaFloresImg,
-      name: "Rosa Flores",
-      company: "Binford Ltd.",
-      city: "Leucadia, CA",
-      state: "Minnesota",
+      "id": "ef219ec5-ffa8-4730-9bb2-c02422931950",
+      "name": "Buchanan Holloway",
+      "img": ellieSmithImg,
+      "titre": "elit enim quis reprehenderit",
+      "categorie": "proident",
+      "color": "secondary-red",
+      "status": "Dé-publié"
     },
     {
-      id: "checkbox114",
-      img: floydMilesImg,
-      name: "Floyd Miles",
-      company: "Biffco Enterprises Ltd.",
-      city: "Idaho city, ID",
-      state: "North Dakota",
+      "id": "ff9dd059-1d3f-44a2-9bab-25a3e05ad55f",
+      "name": "Porter Kelley",
+      "img": ellieSmithImg,
+      "titre": "incididunt irure nostrud commodo",
+      "categorie": "et",
+      "color": "success",
+      "status": "Publié"
     },
     {
-      id: "checkbox121",
-      img: floydMilesImg,
-      name: "Jake Jones",
-      company: "Example LLC.",
-      city: "Yonkers, NY",
-      state: "New York",
+      "id": "9d706ebf-35cc-4d7a-ae35-fd37c875ba9d",
+      "name": "Beth Douglas",
+      "img": ellieSmithImg,
+      "titre": "occaecat laborum voluptate ipsum",
+      "categorie": "laborum",
+      "color": "success",
+      "status": "Publié"
     },
     {
-      id: "checkbox122",
-      img: rosaFloresImg,
-      name: "Selia Hani",
-      company: "Example LLC.",
-      city: "Dallas, TX",
-      state: "Texas",
+      "id": "246a0c8c-5b3b-4ea7-beee-b3c349ff3970",
+      "name": "Wynn Malone",
+      "img": ellieSmithImg,
+      "titre": "id laboris voluptate cupidatat",
+      "categorie": "exercitation",
+      "color": "secondary-yellow",
+      "status": "Attente validation"
     },
     {
-      id: "checkbox123",
-      img: ellieSmithImg,
-      name: "Rosa Flores",
-      company: "Example LLC.",
-      city: "Hartford, CT",
-      state: "Connecticut",
+      "id": "e7fe7e1a-66cc-4b04-8a5c-44e54ec273dc",
+      "name": "Bates Frazier",
+      "img": ellieSmithImg,
+      "titre": "fugiat ut aliqua enim",
+      "categorie": "eu",
+      "color": "success",
+      "status": "Publié"
     },
     {
-      id: "checkbox124",
-      img: janeCooperImg,
-      name: "Mary Elias",
-      company: "Example LLC.",
-      city: "Idaho city, ID",
-      state: "North Dakota",
+      "id": "abbcc96b-764a-4e12-b30d-aec6aa86086a",
+      "name": "Parks Dorsey",
+      "img": ellieSmithImg,
+      "titre": "est nulla sit amet",
+      "categorie": "ut",
+      "color": "success",
+      "status": "Publié"
     },
     {
-      id: "checkbox131",
-      img: ellieSmithImg,
-      name: "Julie Fischer",
-      company: "Example LLC.",
-      city: "Kalamazoo, MI",
-      state: "Michigan",
+      "id": "3994ba8d-50e8-4463-b6cf-abf9e671641c",
+      "name": "Huff Kinney",
+      "img": ellieSmithImg,
+      "titre": "consectetur minim fugiat aliquip",
+      "categorie": "occaecat",
+      "color": "secondary-red",
+      "status": "Dé-publié"
     },
     {
-      id: "checkbox132",
-      img: janeCooperImg,
-      name: "Ellie Smith",
-      company: "Example LLC.",
-      city: "Bainbridge Island, WA",
-      state: "Massachusetts",
+      "id": "d7bfa86f-460a-44c1-8989-b0037f5d26de",
+      "name": "Knapp Cortez",
+      "img": ellieSmithImg,
+      "titre": "irure sit ad qui",
+      "categorie": "commodo",
+      "color": "secondary-yellow",
+      "status": "Attente validation"
     },
     {
-      id: "checkbox133",
-      img: rosaFloresImg,
-      name: "Rosa Flores",
-      company: "Example LLC.",
-      city: "Leucadia, CA",
-      state: "Minnesota",
+      "id": "697b8564-7ee5-4990-ba3b-747a920a0a78",
+      "name": "Wilkins Booker",
+      "img": ellieSmithImg,
+      "titre": "labore eu exercitation qui",
+      "categorie": "enim",
+      "color": "secondary-red",
+      "status": "Dé-publié"
     },
     {
-      id: "checkbox134",
-      img: floydMilesImg,
-      name: "Floyd Miles",
-      company: "Example LLC.",
-      city: "Idaho city, ID",
-      state: "North Dakota",
+      "id": "642c8b57-8815-4a4b-b00e-f807dc024e54",
+      "name": "Patrice Hamilton",
+      "img": ellieSmithImg,
+      "titre": "elit ex aliquip consectetur",
+      "categorie": "non",
+      "color": "secondary-red",
+      "status": "Dé-publié"
     },
     {
-      id: "checkbox141",
-      img: ellieSmithImg,
-      name: "Rosa Flores",
-      company: "Example LLC.",
-      city: "Hartford, CT",
-      state: "Connecticut",
+      "id": "b6a82a99-c88d-49c0-933b-bc39e6bbeab7",
+      "name": "Aurelia Burton",
+      "img": ellieSmithImg,
+      "titre": "do aliquip magna irure",
+      "categorie": "non",
+      "color": "success",
+      "status": "Publié"
     },
     {
-      id: "checkbox142",
-      img: rosaFloresImg,
-      name: "Selia Hani",
-      company: "Example LLC.",
-      city: "Dallas, TX",
-      state: "Texas",
+      "id": "241f5654-9c9c-45ea-8518-fb37149b2855",
+      "name": "Rebekah Howe",
+      "img": ellieSmithImg,
+      "titre": "et reprehenderit fugiat irure",
+      "categorie": "culpa",
+      "color": "success",
+      "status": "Publié"
     },
     {
-      id: "checkbox143",
-      img: janeCooperImg,
-      name: "Julie Fischer",
-      company: "Example LLC.",
-      city: "Kalamazoo, MI",
-      state: "Michigan",
+      "id": "1f2f2781-f738-4a54-9f07-0f57a0c13afc",
+      "name": "Rene Berger",
+      "img": ellieSmithImg,
+      "titre": "cillum enim et irure",
+      "categorie": "commodo",
+      "color": "secondary-yellow",
+      "status": "Attente validation"
     },
     {
-      id: "checkbox144",
-      img: floydMilesImg,
-      name: "Floyd Miles",
-      company: "Example LLC.",
-      city: "Idaho city, ID",
-      state: "North Dakota",
+      "id": "167daa9a-36ce-431a-8284-24c05adcd641",
+      "name": "Irma Calderon",
+      "img": ellieSmithImg,
+      "titre": "mollit id ut commodo",
+      "categorie": "anim",
+      "color": "secondary-red",
+      "status": "Dé-publié"
     },
+    {
+      "id": "25a43297-6302-44ba-941a-af9bfb177ef9",
+      "name": "Dodson Patterson",
+      "img": ellieSmithImg,
+      "titre": "voluptate eiusmod Lorem culpa",
+      "categorie": "Lorem",
+      "color": "secondary-red",
+      "status": "Dé-publié"
+    },
+    {
+      "id": "53525d50-351c-4e39-81d2-8bff555e6d03",
+      "name": "Atkinson Levy",
+      "img": ellieSmithImg,
+      "titre": "consequat qui pariatur aliqua",
+      "categorie": "pariatur",
+      "color": "secondary-red",
+      "status": "Dé-publié"
+    }
   ],
+
+
+
   secondTable: [
     {
       id: "checkbox211",
@@ -149,7 +212,7 @@ const mock = {
       price: "$5.22",
       date: "5/27/21",
       city: "Pembroke",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
     {
@@ -160,7 +223,7 @@ const mock = {
       price: "$53.99",
       date: "3/19/21",
       city: "Austin",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
     {
@@ -193,7 +256,7 @@ const mock = {
       price: "$8.99",
       date: "4/27/21",
       city: "Fairfield",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
     {
@@ -226,7 +289,7 @@ const mock = {
       price: "$8.99",
       date: "4/27/21",
       city: "Fairfield",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
     {
@@ -248,7 +311,7 @@ const mock = {
       price: "$8.99",
       date: "4/27/21",
       city: "Fairfield",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
     {
@@ -270,7 +333,7 @@ const mock = {
       price: "$8.99",
       date: "4/27/21",
       city: "Fairfield",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
     {
@@ -292,7 +355,7 @@ const mock = {
       price: "$53.99",
       date: "3/19/21",
       city: "Austin",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
     {
@@ -314,7 +377,7 @@ const mock = {
       price: "$53.99",
       date: "3/19/21",
       city: "Austin",
-      color: "secondary-cyan",
+      color: "success",
       status: "Sent",
     },
   ],

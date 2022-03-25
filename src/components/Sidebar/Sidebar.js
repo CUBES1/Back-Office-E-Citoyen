@@ -8,6 +8,8 @@ import LinksGroup from "./LinksGroup/LinksGroup.js";
 import { changeActiveSidebarItem } from "../../actions/navigation.js";
 import SofiaLogo from "../Icons/SofiaLogo.js";
 import cn from "classnames";
+import ressLogo from "../../assets/ressLogo_ico.svg";
+
 
 const Sidebar = (props) => {
 
@@ -31,8 +33,8 @@ const Sidebar = (props) => {
   return (
     <nav className={cn(s.root, {[s.sidebarOpen]: burgerSidebarOpen})} >
       <header className={s.logo}>
-        <SofiaLogo/>
-        <span className={s.title}>SOFIA</span>
+        <img src={ressLogo} width="50"/>
+        <span className={s.title}>Ressources <br /> Relationelles</span>
       </header>
       <ul className={s.nav}>
         <LinksGroup
@@ -41,27 +43,45 @@ const Sidebar = (props) => {
           header="Dashboard"
           isHeader
           iconName={<i className={'eva eva-home-outline'}/>}
-          link="/template/dashboard"
+          link="/administration/dashboard"
           index="dashboard"
-          badge="9"
         />
-        <h5 className={s.navTitle}>TEMPLATE</h5>
+        <h5 className={s.navTitle}>Administration</h5>
         <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="Ressources"
+          isHeader
+          iconName={<i className={'eva eva-archive-outline'}/>}
+          link="/administration/tables"
+          index="tables"
+          badge="40"
+        />
+        <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="Utilisateurs"
+          isHeader
+          iconName={<i className={'eva eva-grid-outline'}/>}
+          link="/administration/tables"
+          index="tables"
+        />
+        {/* <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
           activeItem={props.activeItem}
           header="Typography"
           isHeader
           iconName={<i className={'eva eva-text-outline'}/>}
-          link="/template/typography"
+          link="/administration/typography"
           index="typography"
-        />
-        <LinksGroup
+        /> */}
+        {/* <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
           activeItem={props.activeItem}
           header="Tables"
           isHeader
           iconName={<i className={'eva eva-grid-outline'}/>}
-          link="/template/tables"
+          link="/administration/tables"
           index="tables"
         />
         <LinksGroup
@@ -70,7 +90,7 @@ const Sidebar = (props) => {
           header="Notifications"
           isHeader
           iconName={<i className={'eva eva-bell-outline'}/>}
-          link="/template/notifications"
+          link="/administration/notifications"
           index="notifications"
         />
         <LinksGroup
@@ -79,24 +99,21 @@ const Sidebar = (props) => {
           header="UI Elements"
           isHeader
           iconName={<i className={'eva eva-cube-outline'}/>}
-          link="/template/uielements"
+          link="/administration/uielements"
           index="uielements"
           childrenLinks={[
             {
-              header: 'Charts', link: '/template/ui-elements/charts',
+              header: 'Charts', link: '/administration/ui-elements/charts',
             },
             {
-              header: 'Icons', link: '/template/ui-elements/icons',
+              header: 'Icons', link: '/administration/ui-elements/icons',
             },
             {
-              header: 'Google Maps', link: '/template/ui-elements/maps',
+              header: 'Google Maps', link: '/administration/ui-elements/maps',
             },
           ]}
-        />
+        /> */}
       </ul>
-      <div className="bg-widget d-flex mt-auto ml-1">
-        <Button className="rounded-pill my-3 body-2 d-none d-md-block" type="submit" color="secondary-red">Unlock Full Version</Button>
-      </div>
     </nav>
   );
 }
