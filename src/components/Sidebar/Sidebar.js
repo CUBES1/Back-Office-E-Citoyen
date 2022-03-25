@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button} from 'reactstrap';
+import { Button } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import s from "./Sidebar.module.scss";
 import LinksGroup from "./LinksGroup/LinksGroup.js";
@@ -31,9 +31,9 @@ const Sidebar = (props) => {
   }, [props.sidebarOpened])
 
   return (
-    <nav className={cn(s.root, {[s.sidebarOpen]: burgerSidebarOpen})} >
+    <nav className={cn(s.root, { [s.sidebarOpen]: burgerSidebarOpen })} >
       <header className={s.logo}>
-        <img src={ressLogo} width="50"/>
+        <img src={ressLogo} width="50" />
         <span className={s.title}>Ressources <br /> Relationelles</span>
       </header>
       <ul className={s.nav}>
@@ -42,7 +42,7 @@ const Sidebar = (props) => {
           activeItem={props.activeItem}
           header="Dashboard"
           isHeader
-          iconName={<i className={'eva eva-home-outline'}/>}
+          iconName={<i className={'eva eva-home-outline'} />}
           link="/administration/dashboard"
           index="dashboard"
         />
@@ -52,7 +52,7 @@ const Sidebar = (props) => {
           activeItem={props.activeItem}
           header="Ressources"
           isHeader
-          iconName={<i className={'eva eva-archive-outline'}/>}
+          iconName={<i className={'eva eva-file-outline'} />}
           link="/administration/tables"
           index="tables"
           badge="4"
@@ -62,10 +62,51 @@ const Sidebar = (props) => {
           activeItem={props.activeItem}
           header="Utilisateurs"
           isHeader
-          iconName={<i className={'eva eva-people-outline'}/>}
+          iconName={<i className={'eva eva-people-outline'} />}
           link="/administration/users"
           index="users"
         />
+        <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="Catégories"
+          isHeader
+          iconName={<i className={'eva eva-archive-outline'} />}
+          link="/administration/categories"
+          index="categories"
+        />
+
+        <h5 className={s.navTitle}>Statistiques</h5>
+        <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="Graphiques"
+          isHeader
+          iconName={<i className={'eva eva-pie-chart-outline'} />}
+          link="/administration/uielements"
+          index="uielements"
+          childrenLinks={[
+            {
+              header: 'Ressources', link: '/administration/charts/ressources',
+            },
+            {
+              header: 'Catégories', link: '/administration/charts/categories',
+            },
+            {
+              header: 'Utilisateurs', link: '/administration/charts/users',
+            },
+          ]}
+        />
+        <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="Rapport"
+          isHeader
+          iconName={<i className={'eva eva-arrow-circle-down-outline'} />}
+          link="/administration/rapports"
+          index="rapports"
+        />
+
         {/* <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
           activeItem={props.activeItem}

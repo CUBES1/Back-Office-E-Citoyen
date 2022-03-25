@@ -13,6 +13,7 @@ import {
   DropdownToggle,
   DropdownItem,
   Label,
+  Button,
   Badge,
 } from "reactstrap";
 import Widget from "../../components/Widget/Widget.js";
@@ -73,6 +74,11 @@ const Tables = function () {
         <Col>
           <Row className="mb-4">
             <Col>
+              <div className="mb-4">
+                <Button color="primary" className="">
+                  Créer un utilisateur
+                </Button>
+              </div>
               <Widget>
                 <div className={s.tableTitle}>
                   <div className="headline-2">Utilisateurs</div>
@@ -120,7 +126,7 @@ const Tables = function () {
                                   <DropdownItem>
                                     <div>Consulter</div>
                                   </DropdownItem>
-                                  <DropdownItem divider/>
+                                  <DropdownItem divider />
                                   <DropdownItem>
                                     {item.status !== "Actif" ?
                                       <div>Activer</div> :
@@ -128,8 +134,8 @@ const Tables = function () {
                                   </DropdownItem>
                                   <DropdownItem>
                                     <div>Gérer les droits</div>
-                                  </DropdownItem>  
-                                  <DropdownItem divider/>
+                                  </DropdownItem>
+                                  <DropdownItem divider />
                                   <DropdownItem>
                                     <div>Modifier</div>
                                   </DropdownItem>

@@ -16,6 +16,7 @@ import Typography from "../../pages/typography/Typography";
 import Notifications from "../../pages/notifications/Notifications";
 import Tables from "../../pages/tables/Tables";
 import Users from "../../pages/users/users";
+import Categories from "../../pages/categories/categories";
 import Charts from "../../pages/uielements/charts/Charts";
 import Icons from "../../pages/uielements/icons/IconsPage";
 import Maps from "../../pages/uielements/maps/google/GoogleMapPage";
@@ -37,6 +38,7 @@ const Layout = (props) => {
             <Route path="/administration/typography" exact component={Typography} />
             <Route path="/administration/tables" exact component={Tables} />
             <Route path="/administration/users" exact component={Users} />
+            <Route path="/administration/categories" exact component={Categories} />
             <Route path="/administration/notifications" exact component={Notifications} />
             <Route path="/administration/ui-elements" exact render={() => <Redirect to={"/administration/ui-elements/charts"} />} />
             <Route path="/administration/ui-elements/charts" exact component={Charts} />

@@ -245,7 +245,7 @@ const Dashboard = () => {
               <div className="d-flex flex-column mt-3">
                 <div className={s.activity}>
                   <p className="body-2">Publié / En attente</p>
-                  <p className="body-2"><span className="body-3 muted">235</span></p>
+                  <p className="body-2">7 / <span className="body-3 muted">4</span></p>
                 </div>
                 <Progress className="progress-xs" multi>
                   <Progress bar color="success" value="70" />
