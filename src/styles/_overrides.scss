@@ -304,7 +304,7 @@ table > thead > tr > th {
 .table-hover {
   tbody tr {
     @include hover() {
-      background-color: $violet;
+      background-color: #00cba9;
       td {
         color: white;
       }

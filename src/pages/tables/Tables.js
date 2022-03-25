@@ -13,6 +13,7 @@ import {
   DropdownToggle,
   DropdownItem,
   Label,
+  Button,
   Badge,
 } from "reactstrap";
 import Widget from "../../components/Widget/Widget.js";
@@ -33,37 +34,27 @@ import s from "./Tables.module.scss";
 import mock from "./mock.js";
 
 const Tables = function () {
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [firstTable] = useState(mock.firstTable);
-  const [secondTable] = useState(mock.secondTable);
   const [transactions, setTransactions] = useState(mock.transactionsWidget);
   const [tasks, setTasks] = useState(mock.tasksWidget);
   const [firstTableCurrentPage, setFirstTableCurrentPage] = useState(0);
-  const [secondTableCurrentPage, setSecondTableCurrentPage] = useState(0);
-  const [tableDropdownOpen, setTableMenuOpen] = useState(false);
+  
 
   const pageSize = 15;
   const firstTablePagesCount = Math.ceil(firstTable.length / pageSize);
-  const secondTablePagesCount = Math.ceil(secondTable.length / pageSize);
 
   const setFirstTablePage = (e, index) => {
     e.preventDefault();
     setFirstTableCurrentPage(index);
   }
 
-  const setSecondTablePage = (e, index) => {
-    e.preventDefault();
-    setSecondTableCurrentPage(index);
-  }
 
-  const toggle = () => {
-    setDropdownOpen(!dropdownOpen);
-  }
+
+
 
   const transactionMenuOpen = (id) => {
     setTransactions(
-      firstTable.map( transaction => {
+      firstTable.map(transaction => {
         if (transaction.id === id) {
           transaction.dropdownOpen = !transaction.dropdownOpen;
         }
@@ -76,7 +67,7 @@ const Tables = function () {
 
   const toggleTask = (id) => {
     setTasks(
-      tasks.map( task => {
+      tasks.map(task => {
         if (task.id === id) {
           task.completed = !task.completed;
         }
@@ -87,15 +78,21 @@ const Tables = function () {
 
   return (
     <div>
+
       <Row>
         <Col>
           <Row className="mb-4">
             <Col>
+              <div className="mb-4">
+                <Button color="primary" className="">
+                  Ajouter une ressource
+                </Button>
+              </div>
               <Widget>
                 <div className={s.tableTitle}>
                   <div className="headline-2">Ressources</div>
                   <div className="d-flex">
-                    <a href="/#"><img src={searchIcon} alt="Search"/></a>
+                    <a href="/#"><img src={searchIcon} alt="Search" /></a>
                     <a href="/#"><img src={funnelIcon} alt="Funnel" /></a>
                     <a href="/#"><img className="d-none d-sm-block" src={cloudIcon} alt="Cloud" /></a>
                   </div>
@@ -103,55 +100,68 @@ const Tables = function () {
                 <div className="widget-table-overflow">
                   <Table className={`table-striped table-borderless table-hover ${s.statesTable}`} responsive>
                     <thead>
-                    <tr>
-                      <th></th>
-                      <th className="w-25">AUTEUR</th>
-                      <th className="w-25">TITRE</th>
-                      <th className="w-25">CATEGORIE</th>
-                      <th className="w-25">STATUS</th>
-                    </tr>
+                      <tr>
+                        <th></th>
+                        <th className="w-25">AUTEUR</th>
+                        <th className="w-25">TITRE</th>
+                        <th className="w-25">DATE DE PUBLICATION</th>
+                        <th className="w-25">CATEGORIE</th>
+                        <th className="w-25">STATUT</th>
+                      </tr>
                     </thead>
                     <tbody>
-                    {firstTable
-                      .slice(
-                        firstTableCurrentPage * pageSize,
-                        (firstTableCurrentPage + 1) * pageSize
-                      )
-                      .map(item => (
-                        <tr key={uuidv4()}>
-                          <td></td>
-                          <td className="d-flex align-items-center"><img className={s.image} src={item.img} alt="User"/><span className="ml-3">{item.name}</span></td>
-                          <td>{item.titre}</td>
-                          <td>{item.categorie}</td>
-                          <td><Badge color={item.color}>{item.status}</Badge></td>
-                          <td>
-                          <Dropdown
-                        className="d-none d-sm-block"
-                        nav
-                        isOpen={item.dropdownOpen}
-                        toggle={() => transactionMenuOpen(item.id)}
-                      >
-                        <DropdownToggle nav>
-                          <img className="d-none d-sm-block" src={moreIcon} alt="More ..."/>
-                        </DropdownToggle>
-                        <DropdownMenu >
-                          <DropdownItem>
-                            <div>Consulter</div>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <div>Modifier</div>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <div>Suprimmer</div>
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </Dropdown>
-                        </td>
-                        </tr>
-                      ))}
+                      {firstTable
+                        .slice(
+                          firstTableCurrentPage * pageSize,
+                          (firstTableCurrentPage + 1) * pageSize
+                        )
+                        .map(item => (
+                          <tr key={uuidv4()}>
+                            <td></td>
+                            <td className="d-flex align-items-center"><img className={s.image} src={item.img} alt="UserPP" /><span className="ml-3">{item.name}</span></td>
+                            <td>{item.titre}</td>
+                            <td>{item.date}</td>
+                            <td>{item.categorie}</td>
+                            <td><Badge color={item.color}>{item.status}</Badge></td>
+                            <td>
+                              <Dropdown
+                                className="d-none d-sm-block"
+                                nav
+                                isOpen={item.dropdownOpen}
+                                toggle={() => transactionMenuOpen(item.id)}
+                              >
+                                <DropdownToggle nav>
+                                  <img className="d-none d-sm-block" src={moreIcon} alt="More ..." />
+                                </DropdownToggle>
+                                <DropdownMenu >
+                                  <DropdownItem>
+                                    <div>Consulter</div>
+                                  </DropdownItem>
+                                  <DropdownItem divider />
+                                  <DropdownItem>
+                                    {item.status !== "Publié" ?
+                                      <div>Approuver</div> :
+                                      <div>Désapprouver</div>}
+                                  </DropdownItem>
+                                  <DropdownItem divider />
+                                  <DropdownItem>
+                                    <div>Voir les commentaires</div>
+                                  </DropdownItem>
+                                  <DropdownItem divider />
+                                  <DropdownItem>
+                                    <div>Modifier</div>
+                                  </DropdownItem>
+                                  <DropdownItem>
+                                    <div>Supprimer</div>
+                                  </DropdownItem>
+                                </DropdownMenu>
+                              </Dropdown>
+                            </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </Table>
-                  
+
 
                   <Pagination className="pagination-borderless" aria-label="Page navigation example">
                     <PaginationItem disabled={firstTableCurrentPage <= 0}>
@@ -183,186 +193,6 @@ const Tables = function () {
             </Col>
           </Row>
 
-
-
-          {/* <Row className="mb-4">
-            <Col>
-              <Widget>
-                <div className={s.tableTitle}>
-                  <div className="headline-2">Material UI table</div>
-                  <Dropdown
-                    className="d-none d-sm-block"
-                    nav
-                    isOpen={tableDropdownOpen}
-                    toggle={() => tableMenuOpen()}
-                  >
-                    <DropdownToggle nav>
-                      <img className="d-none d-sm-block" src={moreIcon} alt="More..."/>
-                    </DropdownToggle>
-                    <DropdownMenu >
-                      <DropdownItem>
-                        <div>Copy</div>
-                      </DropdownItem>
-                      <DropdownItem>
-                        <div>Edit</div>
-                      </DropdownItem>
-                      <DropdownItem>
-                        <div>Delete</div>
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
-                </div>
-                <div className="widget-table-overflow">
-                  <Table className="table-striped table-borderless table-hover" responsive>
-                    <thead>
-                    <tr>
-                      <th>
-                        <div className="checkbox checkbox-primary">
-                          <input
-                            id="checkbox200"
-                            className="styled"
-                            type="checkbox"
-                          />
-                          <label for="checkbox200"/>
-                        </div>
-                      </th>
-                      <th className={s.nameCol}>NAME</th>
-                      <th>EMAIL</th>
-                      <th>PRODUCT</th>
-                      <th>PRICE</th>
-                      <th>DATE</th>
-                      <th>CITY</th>
-                      <th>STATUS</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {secondTable
-                      .slice(
-                        secondTableCurrentPage * pageSize,
-                        (secondTableCurrentPage + 1) * pageSize
-                      )
-                      .map(item => (
-                      <tr key={uuidv4()}>
-                        <td>
-                          <div className="checkbox checkbox-primary">
-                            <input
-                              id={item.id}
-                              className="styled"
-                              type="checkbox"
-                            />
-                            <label for={item.id} />
-                          </div>
-                        </td>
-                        <td>{item.name}</td>
-                        <td>{item.email}</td>
-                        <td>{item.product}</td>
-                        <td>{item.price}</td>
-                        <td>{item.date}</td>
-                        <td>{item.city}</td>
-                        <td><Badge color={item.color}>{item.status}</Badge></td>
-                      </tr>
-                    ))}
-                    </tbody>
-                  </Table>
-                  <Pagination className="pagination-with-border">
-                    <PaginationItem disabled={secondTableCurrentPage <= 0}>
-                      <PaginationLink
-                        onClick={e => setSecondTablePage(e, secondTableCurrentPage - 1)}
-                        previous
-                        href="#top"
-                      />
-                    </PaginationItem>
-                    {[...Array(secondTablePagesCount)].map((page, i) =>
-                      <PaginationItem active={i === secondTableCurrentPage} key={i}>
-                        <PaginationLink onClick={e => setSecondTablePage(e, i)} href="#top">
-                          {i + 1}
-                        </PaginationLink>
-                      </PaginationItem>
-                    )}
-                    <PaginationItem disabled={secondTableCurrentPage >= secondTablePagesCount - 1}>
-                      <PaginationLink
-                        onClick={e => setSecondTablePage(e, secondTableCurrentPage + 1)}
-                        next
-                        href="#top"
-                      />
-                    </PaginationItem>
-                  </Pagination>
-                </div>
-              </Widget>
-            </Col>
-          </Row> */}
-
-          
-          {/* <Row>
-            <Col xs={12} xl={8} className="pr-grid-col">
-              <Widget>
-                <div className={s.tableTitle}>
-                  <div className="headline-2">Recent transaction</div>
-                  <div>
-                    <ButtonDropdown
-                      isOpen={dropdownOpen}
-                      toggle={toggle}
-                      className=""
-                    >
-                      <DropdownToggle caret>
-                        &nbsp; Weekly &nbsp;
-                      </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem>Daily</DropdownItem>
-                        <DropdownItem>Weekly</DropdownItem>
-                        <DropdownItem>Monthly</DropdownItem>
-                      </DropdownMenu>
-                    </ButtonDropdown>
-                 
-                  </div>
-                </div>
-                <div className={s.widgetContentBlock}>
-                  {transactions.map(item => (
-                    <div key={uuidv4()} className={s.content}>
-                      <div><img src={item.icon} alt="Item" /><span className="body-2 ml-3">{item.category}</span></div>
-                      <div className="body-3 muted d-none d-md-block">{item.date}</div>
-                      <div className="body-2">{item.price}</div>
-                      <div className="body-3 muted d-none d-lg-block">{item.description}</div>
-
-                      <Dropdown
-                        className="d-none d-sm-block"
-                        nav
-                        isOpen={item.dropdownOpen}
-                        toggle={() => transactionMenuOpen(item.id)}
-                      >
-                        <DropdownToggle nav>
-                          <img className="d-none d-sm-block" src={moreIcon} alt="More ..."/>
-                        </DropdownToggle>
-                        <DropdownMenu >
-                          <DropdownItem>
-                            <div>Copy</div>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <div>Edit</div>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <div>Delete</div>
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </Dropdown>
-                    </div>
-                  ))}
-                </div>
-              </Widget>
-            </Col>
-            <Col xs={12} xl={4} className="pl-grid-col mt-4 mt-xl-0">
-              <Widget>
-                <div className={s.tableTitle}>
-                  <div className="headline-2">Tasks</div>
-                </div>
-                <div className={s.widgetContentBlock}>
-                  <TaskContainer tasks={tasks} toggleTask={toggleTask} />
-                </div>
-              </Widget>
-            </Col>
-          </Row>
-        </Col>
-      </Row> */}
         </Col>
       </Row>
     </div>

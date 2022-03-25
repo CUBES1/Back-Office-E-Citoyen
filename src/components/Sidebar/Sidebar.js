@@ -55,7 +55,7 @@ const Sidebar = (props) => {
           iconName={<i className={'eva eva-archive-outline'}/>}
           link="/administration/tables"
           index="tables"
-          badge="40"
+          badge="4"
         />
         <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
@@ -63,8 +63,8 @@ const Sidebar = (props) => {
           header="Utilisateurs"
           isHeader
           iconName={<i className={'eva eva-people-outline'}/>}
-          link="/administration/tables"
-          index="tables"
+          link="/administration/users"
+          index="users"
         />
         {/* <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}

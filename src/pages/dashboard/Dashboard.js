@@ -38,21 +38,21 @@ const Dashboard = () => {
   {
     "titre": "Actualités",
     "desc": "Informations liée à l'actualitée",
-    "nb": "240"
+    "nb": "7"
   }
 
   const cat2 =
   {
     "titre": "Aides",
     "desc": "Aides versée à la population",
-    "nb": "225"
+    "nb": "4"
   }
 
   const cat3 =
   {
     "titre": "Etudiants",
     "desc": "Ressources liées à la vie étudiante",
-    "nb": "198"
+    "nb": "2"
   }
 
   const cat = [cat1, cat2, cat3];
@@ -222,15 +222,15 @@ const Dashboard = () => {
             {/* Stats global ressources */}
             <div className={s.userParams}>
               <div className="d-flex flex-column">
-                <p className="headline-3">210</p>
+                <p className="headline-3">4</p>
                 <p className="body-3 muted">En attente</p>
               </div>
               <div className="d-flex flex-column">
-                <p className="headline-3">220</p>
+                <p className="headline-3">6</p>
                 <p className="body-3 muted">Dépublié</p>
               </div>
               <div className="d-flex flex-column">
-                <p className="headline-3">25</p>
+                <p className="headline-3">7</p>
                 <p className="body-3 muted">Publiée</p>
               </div>
             </div>
@@ -248,8 +248,8 @@ const Dashboard = () => {
                   <p className="body-2"><span className="body-3 muted">235</span></p>
                 </div>
                 <Progress className="progress-xs" multi>
-                  <Progress bar color="success" value="90" />
-                  <Progress bar color="warning" value="10" />
+                  <Progress bar color="success" value="70" />
+                  <Progress bar color="warning" value="40" />
                 </Progress>
               </div>
             </div>
