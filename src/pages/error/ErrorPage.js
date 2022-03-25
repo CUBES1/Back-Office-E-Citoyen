@@ -29,7 +29,7 @@ const ErrorPage = () => {
         <img className={s.errorImage} src={errorImage} alt="Error page" width="80" />
       </div>
       <div className={s.footer}>
-        <span className={s.footerLabel}>2021 &copy; Flatlogic. Hand-crafted & Made with</span>
+      <span className={s.footerLabel}>The Besoin Lab 2022 &copy; Powered by Flatlogic. Fabriqué à la main et avec</span>
         <FooterIcon />
       </div>
     </div>
