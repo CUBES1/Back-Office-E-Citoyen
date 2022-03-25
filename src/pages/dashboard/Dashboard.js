@@ -255,24 +255,7 @@ const Dashboard = () => {
             </div>
             {/* Fin statistique */}
 
-            {/* Recap des dernières ressources */}
-            <p className="headline-3">Dernière ressources</p>
-            {cat.map((cat) =>
-              <div key={uuidv4()} className={`mt-4 ${s.widgetBlock}`}>
-                <div className={s.widgetBody}>
-                  <div className="d-flex">
-                    <div className="d-flex flex-column">
-                      <p className="body-2">{cat.titre}</p>
-                      <p className="body-3 muted">{cat.desc}</p>
-                    </div>
-                  </div>
-                  <div className="body-3 muted">
-                    {cat.nb}
-                  </div>
-                </div>
-              </div>
-            )}
-            {/* fin recap des dernières ressources */}
+          
 
             {/* Zone téléchargement rapport */}
             <div className="d-flex justify-content-between mt-5">
