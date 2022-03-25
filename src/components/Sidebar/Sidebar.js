@@ -62,7 +62,7 @@ const Sidebar = (props) => {
           activeItem={props.activeItem}
           header="Utilisateurs"
           isHeader
-          iconName={<i className={'eva eva-grid-outline'}/>}
+          iconName={<i className={'eva eva-people-outline'}/>}
           link="/administration/tables"
           index="tables"
         />
