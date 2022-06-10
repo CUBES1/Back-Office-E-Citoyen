@@ -21,18 +21,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 13.x
-    
-   - name: Install YARN
-   - uses: bahmutov/npm-install@v1
+
+    - name: Install Yarn
+      uses: bahmutov/npm-install@v1
       with:
-      install-command: yarn --frozen-lockfile --silent
+        install-command: yarn --frozen-lockfile --silent
     
     - name: Install packages
-        run: yarn install
+      run: yarn install
 
     - name: Build project
       run: yarn build
-f
+
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
