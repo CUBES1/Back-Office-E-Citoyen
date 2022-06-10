@@ -22,8 +22,10 @@ jobs:
       with:
         node-version: 13.x
     
-    - name: Install YARN
-      run: npm install yarn 
+   - name: Install YARN
+   - uses: bahmutov/npm-install@v1
+      with:
+      install-command: yarn --frozen-lockfile --silent
     
     - name: Install packages
         run: yarn install
