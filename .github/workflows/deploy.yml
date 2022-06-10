@@ -30,7 +30,7 @@ jobs:
 
     - name: Build project
       run: yarn build
-
+f
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
